@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+    /* background-color: #3A4160; */
+
+}
+
+.header {
+    background-color: #3A4160;
+}
+.header h1 {
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: wheat;
+    font-size: 3rem;
+    padding: 15px 30px;
+}
+
+.section-hero{
+    background-color: #3A4160;
+
+}
+
+.section-hero .section_hero_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 15px; */
+}
+
+.section-hero .section_hero_header .hero_heading {
+    font-family: "Kenia", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+    color: white;
+}
+
+.section-hero .section_hero_header .hero_slogan {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: white;
+}
+
+.search_input {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.search_input #city {
+    outline: none;
+    color: wheat;
+    border: 1px solid white;
+    padding: 15px;
+    background-color: transparent;
+}
+
+#button_search {
+    padding: 10px;
+    background-color: white;
+    font-size: 1.2rem;
+    border: 1px solid white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+#button_search i {
+    background-color: white;
+    transition: 0.3s;
+
+}
+
+#button_search:hover {
+    background-color: #e1e2e7;
+    /* border: none; */
+}
+
+#button_search:hover i {
+    background-color: #e1e2e7;
+}
+
+.card_weather {
+    position: relative;
+    /* text-align: center; */
+    margin: 0px auto;
+    
+    padding: 30px;
+    background-color: #d9d9d928;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    height: 200px;
+    width: 300px;
+    /* cursor: pointer; */
+    transition: 0.3s;
+}
+
+.card_weather:hover{
+    transform: translateY(10px);
+    box-shadow: 5px 15px 100px #e1e2e765;
+}
+
+.card_weather img{
+    position: absolute;
+    right: 3%;
+}
+
+.current_city,
+.city_temp,
+.weather_condition,
+.Humidity,
+.wind,
+.weather_condition {
+    background-color: transparent;
+    color: white;
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+
+.city_temp {
+    font-size: 3rem;
+}
+.bottom_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 120px;
+    position: absolute;
+    /* margin-top: 20px; */
+    bottom: 0;
+    padding-bottom: 20px;
+    background-color: transparent;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+
+}
+
+.loading{
+    background-color: transparent;
+    color: #e1e2e7;
+    font-size: 1rem;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+.forecast-section{
+    position: relative;
+    height: 100vh;
+    background-color: #3A4160;
+    padding: 15px 30px;
+}
+
+
+.forecast-section .days_navLinks{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+.forecast-section .forcaset_footer{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    translate: -50% -50%;
+}
+.forecast-section .forcaset_footer .forecast_current_city{
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.day{
+    border: 1px solid white;
+    padding: 5px;
+    transition: 0.3s;
+}
+.day:hover{
+    background-color: wheat;
+    color: #3A4160;
+}
+.days_navLinks p{
+    /* background: transparent; */
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+
+.forcast_container{
+    display: grid;
+    grid-template-columns: repeat(4 , 150px);
+    gap: 60px;
+    justify-content: center;
+    margin-top: 80px;
+    background-color: transparent;
+}
+
+.forcaste_card{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    /* padding: 20px; */
+    background-color: #505a8771;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    
+}
+
+.card_wind p,
+.card_header p,
+.card_temp p,
+.card_weather_condition p{
+    background-color: transparent;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    
+}
+
+.card_weather_condition p{
+    font-size: 0.8rem;
+}
+
+.card_temp p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+    font-size: 1rem;
+    /* margin-top: 20px; */
+    font-weight: bold;
+}
+
+.card_wind{
+    margin-top: 5px;
+}
+
+
+.forcaste_card .card_header{
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    /* margin-top: 10px; */
+    padding: 5px;
+
+    /* background-color: black; */
+}
+.card_wind p{
+    /* position: absolute;
+    bottom: 10px; */
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.forcaste_card:hover{
+    transform: translateY(10px);
+    box-shadow: 5px 15px 100px #e1e2e765;
+}
+
+
+.forcast_navlink_active{
+    background-color: wheat;
+    color: #3A4160;
+    /* background-color: black; */
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+
