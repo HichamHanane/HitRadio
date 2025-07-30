@@ -191,6 +191,7 @@
 }
 .forecast-section .forcaset_footer .forecast_current_city{
     color: white;
+    font-weight: 300;
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -296,3 +297,52 @@
     font-family: "Poppins", sans-serif;
 }
 
+
+footer{
+    position: relative;
+    height: 35vh;
+    background-color: #3A4160;
+    border-top: 1px solid rgba(255, 255, 255, 0.336);
+}
+
+.footer_logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer_logo h1{
+    font-size: 5rem;
+    color: wheat;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.footer_logo .social_media{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer_logo .social_media i{
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer_logo .social_media i:hover{
+    color: #4b547c;
+}
+
+.copyright{
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    translate: -50%;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+}
