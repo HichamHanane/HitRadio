@@ -3,6 +3,9 @@ const apiKey = "df44f85ddab485da6f7ffca1cee027ef";
 
 let currentWeatherIsLoading = true;
 
+
+
+
 const getWeatherCurrentLocation = async () => {
 
     if (navigator.geolocation) {
@@ -36,6 +39,9 @@ const showLoactionAndWeather = async (position) => {
         console.log('response :', getWeatherData.data);
 
         localStorage.setItem("current city", JSON.stringify(getWeatherData.data.name))
+
+        document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))}`
+        
         currentWeatherIsLoading = false;
         let currentWeather = getWeatherData.data.weather[0]?.main;
         let iconCode = getWeatherData.data.weather[0]?.icon;
