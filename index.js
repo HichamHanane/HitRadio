@@ -88,8 +88,8 @@ const showLoactionAndWeather = async (position) => {
             <p class="weather_condition" id="weatherCondition">${currentWeather}</p>
 
             <div class="bottom_card">
-                <p id="currentWind" class="wind">Wind : ${getWeatherData.data.wind.speed} km/h</p>
-                <p id="currentHumidity" class="Humidity">Humidity : ${getWeatherData.data.main.humidity} % </p>
+                <p id="currentWind" class="wind"><i class="fa-solid fa-wind" style="font-size:0.8rem;"></i> Wind : ${getWeatherData.data.wind.speed} km/h</p>
+                <p id="currentHumidity" class="Humidity"><i class="fa-solid fa-droplet" style="font-size:0.8rem;"></i>  Humidity : ${getWeatherData.data.main.humidity} % </p>
             </div>
         `
 

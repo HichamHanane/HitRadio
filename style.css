@@ -192,6 +192,8 @@
 
 }
 
+
+
 .current_city i {
     background-color: transparent;
     color: var(--icon-color);
@@ -204,9 +206,9 @@
 
 .bottom_card {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-    gap: 120px;
+    gap: 100px;
     position: absolute;
     /* margin-top: 20px; */
     bottom: 0;
