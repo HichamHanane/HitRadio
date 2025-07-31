@@ -71,12 +71,16 @@
 .section-hero {
     background-color: var(--background-color-primary);
     padding: 3rem 2rem;
+    overflow-x: hidden;
+
 }
 
 .section-hero .section_hero_header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
+
     /* margin-top: 15px; */
 }
 
@@ -277,7 +281,7 @@
 @media (max-width: 768px) {
     .section-hero {
         padding: 1.5rem 1rem;
-        width: 100%;
+        /* width: 100%; */
     }
 
     .hero_heading {
@@ -342,7 +346,7 @@
 @media (max-width: 480px) {
     .section-hero {
         padding: 1rem 0.5rem;
-        width: 100%;
+        /* width: 100%; */
     }
 
     .hero_heading {
@@ -410,7 +414,7 @@
 @media (max-width: 320px) {
     .hero_heading {
         font-size: 1.5rem;
-        width: 100%;
+        /* width: 100%; */
     }
 
     .search_input {
@@ -441,6 +445,7 @@
     height: 100vh;
     background-color: var(--background-color-primary);
     padding: 15px 30px;
+    /* overflow: hidden; */
 }
 
 
@@ -619,11 +624,14 @@
 }
 
 @media (max-width: 992px) {
-
+    .forecast-section{
+        /* width: 100%; */
+    }
     .forcast_container {
         gap: 30px;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        width: 100%;
+        /* width: 100%; */
+        
     }
 
     .forcaste_card {

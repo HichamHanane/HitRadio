@@ -2,7 +2,7 @@
 
 This is a responsive weather forecast web application that shows the current weather and 5-day forecast for any city using the OpenWeather API.
 
-#Features
+# Features
 
 -  Detects your current location
 -  Search weather by city name

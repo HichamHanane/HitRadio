@@ -71,6 +71,7 @@ const showLoactionAndWeather = async (position) => {
         const ApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${Latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
 
         const getWeatherData = await axios.get(ApiUrl);
+        
         console.log('response :', getWeatherData.data);
 
         localStorage.setItem("current city", JSON.stringify(getWeatherData.data.name))
@@ -119,6 +120,7 @@ const getCityWeather = async (city) => {
     try {
 
         let Apiurl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
         let getWeatheCity = await axios.get(`${Apiurl}`)
 
         let currentWeather = getWeatheCity.data.weather[0]?.main;
