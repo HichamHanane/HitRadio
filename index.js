@@ -39,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-
+// logic code to get the current location
 const getWeatherCurrentLocation = async () => {
 
     if (navigator.geolocation) {
@@ -51,8 +50,6 @@ const getWeatherCurrentLocation = async () => {
         alert("Geolocation is not supported by this browser.");
     }
 }
-
-
 
 const showLoactionAndWeather = async (position) => {
 
@@ -71,7 +68,7 @@ const showLoactionAndWeather = async (position) => {
         const ApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${Latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
 
         const getWeatherData = await axios.get(ApiUrl);
-        
+
         console.log('response :', getWeatherData.data);
 
         localStorage.setItem("current city", JSON.stringify(getWeatherData.data.name))
@@ -102,9 +99,7 @@ const showLoactionAndWeather = async (position) => {
 }
 
 
-
-
-
+//logic code the city's weather that the user enter
 const search_button = document.getElementById('button_search');
 
 search_button.onclick = () => {
@@ -152,7 +147,7 @@ const getCityWeather = async (city) => {
     }
 }
 
-
+// logic code to get the forecast days 
 const getThe5days = async () => {
 
     try {
@@ -163,12 +158,13 @@ const getThe5days = async () => {
         let get5Days = await axios.get(ApiUrl);
 
         console.log("5 days", get5Days.data.list[2]);
+
         localStorage.setItem('list_of_5_forecast', JSON.stringify(get5Days.data.list));
+
         document.getElementById('days_navLinks').innerHTML = ""
+        
+        
         let days = []
-
-
-
         get5Days.data.list.forEach(day => {
             let dateOnly = day.dt_txt.split(" ")[0];
 
@@ -194,6 +190,7 @@ const getThe5days = async () => {
     }
 }
 
+// logic code to to change the active element style
 const navlinksActiveElement = () =>{
     const div_container =  document.getElementById('days_navLinks')
     const childs = div_container.querySelectorAll('.day')
@@ -213,14 +210,16 @@ const navlinksActiveElement = () =>{
     
 }
 
-
+// logic code to display the weather(3 hours forecast) of each 5-day 
 const getForecast = (selectedDay) => {
     
     navlinksActiveElement();
     
     console.log('Daay :', selectedDay);
+
     let forecast_list = JSON.parse(localStorage.getItem('list_of_5_forecast'));
     let select_day_forcast = forecast_list.filter((day) => (day.dt_txt.split(" ")[0]) == selectedDay);
+
     console.log("Liist :", select_day_forcast);
 
     document.getElementById('forcast_container').innerHTML = "";

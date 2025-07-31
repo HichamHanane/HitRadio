@@ -38,6 +38,8 @@
 
 }
 
+
+/* HEADER */
 .header {
     background-color: var(--background-color-primary);
     display: flex; 
@@ -68,6 +70,7 @@
     color: var(--text-color-secondary);
 }
 
+/* HERO-SECTION */
 .section-hero {
     background-color: var(--background-color-primary);
     padding: 3rem 2rem;
@@ -125,7 +128,6 @@
     color: rgba(0, 0, 0, 0.5); 
 }
 
-
 #button_search {
     padding: 10px;
     background-color: var(--button-background);
@@ -136,7 +138,6 @@
     cursor: pointer;
     transition: 0.3s;
 }
-
 
 #button_search i {
     background-color: var(--button-background);
@@ -152,9 +153,6 @@
 #button_search:hover i {
     background-color: var(--button-hover-background);
 }
-
-
-
 
 .card_weather {
     position: relative;
@@ -229,7 +227,7 @@
 }
 
 
-/* Responsive Design */
+/* Responsive Design SECTION HERO */
 
 /* Large Desktop */
 @media (min-width: 1200px) {
@@ -438,8 +436,7 @@
     }
 }
 
-
-
+/* FORECAST SECTION */
 .forecast-section {
     position: relative;
     height: 100vh;
@@ -447,7 +444,6 @@
     padding: 15px 30px;
     /* overflow: hidden; */
 }
-
 
 .forecast-section .days_navLinks {
     background-color: transparent;
@@ -476,6 +472,7 @@
     cursor: pointer;
 }
 
+/* Responsive Design SECTION FORECAST */
 @media (max-width: 768px) {
 
     .forecast-section .days_navLinks {
@@ -615,6 +612,7 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* Responsive Design  */
 @media (max-width: 1200px) {
 
     .forcast_container {
@@ -775,7 +773,7 @@
     }
 }
 
-
+/* FOOTER */
 footer {
     background-color: var(--background-color-primary);
     border-top: 1px solid rgba(255, 255, 255, 0.336);
@@ -833,8 +831,7 @@ footer {
     margin-top: 20px; 
 }
 
-
-
+/* Responsive Design FOOTER */
 @media (max-width: 992px) { 
     footer {
         padding: 25px 15px 15px 15px;
