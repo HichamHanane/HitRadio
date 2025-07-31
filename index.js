@@ -3,6 +3,41 @@ const apiKey = "df44f85ddab485da6f7ffca1cee027ef";
 
 let currentWeatherIsLoading = true;
 
+// Theme Toggle Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Function to set the theme
+    const setTheme = (theme) => {
+        if (theme === 'light') {
+            body.classList.add('light-mode');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        } else {
+            body.classList.remove('light-mode');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+        localStorage.setItem('theme', theme);
+    };
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        // Default to dark mode if no preference is saved
+        setTheme('dark');
+    }
+
+    // Toggle theme on button click
+    themeToggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('light-mode')) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    });
+});
 
 
 
