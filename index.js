@@ -37,6 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
             setTheme('light');
         }
     });
+    new Splide('#custom-carousel', {
+        type: 'loop',
+        perPage: 3,
+        gap: '8rem',
+        breakpoints: {
+            1024: {
+                perPage: 2,
+            },
+            640: {
+                perPage: 1,
+            },
+        },
+    }).mount();
 });
 
 // logic code to get the current location
@@ -73,8 +86,8 @@ const showLoactionAndWeather = async (position) => {
 
         localStorage.setItem("current city", JSON.stringify(getWeatherData.data.name))
 
-        document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))}`
-        
+        // document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))}`
+
         currentWeatherIsLoading = false;
         let currentWeather = getWeatherData.data.weather[0]?.main;
         let iconCode = getWeatherData.data.weather[0]?.icon;
@@ -123,7 +136,7 @@ const getCityWeather = async (city) => {
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`
         localStorage.setItem("current city", JSON.stringify(getWeatheCity.data.name))
 
-        document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))}`
+        // document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))}`
 
         getThe5days();
 
@@ -135,8 +148,8 @@ const getCityWeather = async (city) => {
             <p class="weather_condition" id="weatherCondition">${currentWeather}</p>
 
             <div class="bottom_card">
-                <p id="currentWind" class="wind">Wind : ${getWeatheCity.data.wind.speed} km/h</p>
-                <p id="currentHumidity" class="Humidity">Humidity : ${getWeatheCity.data.main.humidity} % </p>
+                <p id="currentWind" class="wind"><i class="fa-solid fa-wind" style="font-size:0.8rem;"></i> Wind : ${getWeatheCity.data.wind.speed} km/h</p>
+                <p id="currentHumidity" class="Humidity"><i class="fa-solid fa-droplet" style="font-size:0.8rem;"></i> Humidity : ${getWeatheCity.data.main.humidity} % </p>
             </div>
         `
 
@@ -157,16 +170,19 @@ const getThe5days = async () => {
         let ApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
         let get5Days = await axios.get(ApiUrl);
 
-        console.log("5 days", get5Days.data.list[2]);
+        console.log("5 days", get5Days.data.list);
 
         localStorage.setItem('list_of_5_forecast', JSON.stringify(get5Days.data.list));
 
+        Forecast5Days(get5Days.data.list);
+
         document.getElementById('days_navLinks').innerHTML = ""
-        
-        
+
+
         let days = []
         get5Days.data.list.forEach(day => {
             let dateOnly = day.dt_txt.split(" ")[0];
+
 
             if (!days.includes(dateOnly)) {
                 days.push(dateOnly)
@@ -190,31 +206,113 @@ const getThe5days = async () => {
     }
 }
 
+
+const Forecast5Days = (list) => {
+    let days = {}
+    list.forEach(day => {
+        let date = day.dt_txt.split(" ")[0];
+
+        if (!days[date]) {
+            days[date] = [];
+        }
+        days[date].push(day);
+    })
+
+    console.log('----- Days ----- ', days);
+
+    let dailyAverages = [];
+    for (let date in days) {
+        let dayData = days[date]
+        let TempSum = 0;
+
+        dayData.forEach(entry => {
+            TempSum += entry.main.temp;
+        });
+
+        let avgTemp = TempSum / dayData.length;
+        let mainWeather = dayData[0].weather[0].main;
+        let windWeather = dayData[0].wind.speed;
+        let humidityWeather = dayData[0].main.humidity;
+        let iconCode = dayData[0].weather[0].icon;
+        dailyAverages.push({
+            date: date,
+            avgTemp: avgTemp.toFixed(1),
+            weather: mainWeather,
+            wind: windWeather,
+            humidity: humidityWeather,
+            icon: iconCode
+        });
+
+    }
+
+    console.log("Daily Averages : ", dailyAverages);
+    let currentCity = JSON.parse(localStorage.getItem('current city'));
+
+    document.getElementById('splide__list').innerHTML = "";
+    dailyAverages.forEach(day => {
+        document.getElementById('splide__list').innerHTML += `
+            <li class="splide__slide">
+                    <div class="card_weather_forecast">
+                        <h6 class="forecast_5days_header">${new Date(day.date).toLocaleDateString("en-US", { weekday: "long" })}</h6>
+                        <h1 class="current_city" id="currentCity">
+                            <i class="fa-solid fa-location-dot"style="background-color: transparent;font-size:1.5rem;color:#3A4160"></i>
+                            ${currentCity}
+                        </h1>
+                        
+                        <h2 class="city_temp" id="currentTemp">${day.avgTemp}°C</h2>
+                        <p class="weather_condition" id="weatherCondition">${day.weather}</p>
+                    
+                        <div class="bottom_card">
+                            <p id="currentWind" class="wind">Wind : ${day.wind} km/h</p>
+                            <p id="currentHumidity" class="Humidity">Humidity : ${day.humidity} % </p>
+                        </div>
+                    </div>
+                </li>
+        
+        `
+    })
+
+    new Splide('#custom-carousel', {
+        type: 'loop',
+        perPage: 4,
+        gap: '8rem',
+        breakpoints: {
+            1024: {
+                perPage: 2,
+            },
+            640: {
+                perPage: 1,
+            },
+        },
+    }).mount();
+
+}
+
 // logic code to to change the active element style
-const navlinksActiveElement = () =>{
-    const div_container =  document.getElementById('days_navLinks')
+const navlinksActiveElement = () => {
+    const div_container = document.getElementById('days_navLinks')
     const childs = div_container.querySelectorAll('.day')
 
-    childs.forEach((child)=>{
+    childs.forEach((child) => {
         console.log("Child :", child);
 
-        child.addEventListener("click",()=>{
+        child.addEventListener("click", () => {
             childs.forEach(child_element => child_element.classList.remove('forcast_navlink_active'))
 
             child.classList.add('forcast_navlink_active');
         })
 
 
-        
+
     })
-    
+
 }
 
 // logic code to display the weather(3 hours forecast) of each 5-day 
 const getForecast = (selectedDay) => {
-    
+
     navlinksActiveElement();
-    
+
     console.log('Daay :', selectedDay);
 
     let forecast_list = JSON.parse(localStorage.getItem('list_of_5_forecast'));
@@ -263,6 +361,7 @@ const getForecast = (selectedDay) => {
 getWeatherCurrentLocation();
 getThe5days();
 
-document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))} `
+
+// document.getElementById('forecast_current_city').innerHTML = `${JSON.parse(localStorage.getItem('current city'))} `
 // getCurrentLocation();
 

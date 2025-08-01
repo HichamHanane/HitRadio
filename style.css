@@ -13,7 +13,7 @@
     --card-background: #87cfeb13;
     --button-background: white;
     --button-hover-background: #e1e2e7;
-    --icon-color: #3A4160; 
+    --icon-color: #3A4160;
 }
 
 .light-mode {
@@ -42,10 +42,10 @@
 /* HEADER */
 .header {
     background-color: var(--background-color-primary);
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding-right: 30px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
 }
 
 .header h1 {
@@ -61,8 +61,8 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1.8rem; 
-    color: var(--text-color-primary); 
+    font-size: 1.8rem;
+    color: var(--text-color-primary);
     transition: color 0.3s;
 }
 
@@ -93,7 +93,7 @@
     font-style: normal;
     font-size: 3rem;
     color: var(--text-color-primary);
-    background-color: transparent; 
+    background-color: transparent;
 }
 
 .section-hero .section_hero_header .hero_slogan {
@@ -120,12 +120,12 @@
     background-color: transparent;
 }
 
-.search_input #city::placeholder { 
-    color: rgba(255, 255, 255, 0.7); 
+.search_input #city::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .light-mode .search_input #city::placeholder {
-    color: rgba(0, 0, 0, 0.5); 
+    color: rgba(0, 0, 0, 0.5);
 }
 
 #button_search {
@@ -213,11 +213,26 @@
     /* margin-top: 20px; */
     bottom: 0;
     padding-bottom: 20px;
+    /* padding-right: 5px; */
     background-color: transparent;
     color: var(--text-color-primary);
     font-family: "Poppins", sans-serif;
     font-size: 0.8rem;
 
+}
+
+.wind {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.Humidity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
 .loading {
@@ -447,6 +462,15 @@
     /* overflow: hidden; */
 }
 
+.forecast-section header{
+    /* text-align: center; */
+    margin:0 80px 30px 80px;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color-primary);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
 .forecast-section .days_navLinks {
     background-color: transparent;
     display: flex;
@@ -572,7 +596,8 @@
 }
 
 .card_temp p img {
-    background-color: transparent; /* Ensure icon background is transparent */
+    background-color: transparent;
+    /* Ensure icon background is transparent */
 }
 
 
@@ -624,14 +649,15 @@
 }
 
 @media (max-width: 992px) {
-    .forecast-section{
+    .forecast-section {
         /* width: 100%; */
     }
+
     .forcast_container {
         gap: 30px;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         /* width: 100%; */
-        
+
     }
 
     .forcaste_card {
@@ -686,26 +712,28 @@
 }
 
 @media (max-width: 480px) {
-    .forecast-section{
+    .forecast-section {
         height: 100%;
     }
-    .forecast-section .forcaset_footer{
+
+    .forecast-section .forcaset_footer {
         display: none;
 
     }
+
     .forcast_container {
         grid-template-columns: 1fr;
         gap: 15px;
         margin-top: 30px;
         padding: 0 10px;
         /* background-color: black; */
-        
+
 
     }
 
     .forcaste_card {
         width: auto;
-        
+
         height: auto;
         max-height: 120px;
         display: grid;
@@ -779,20 +807,20 @@
 footer {
     background-color: var(--background-color-primary);
     border-top: 1px solid rgba(255, 255, 255, 0.336);
-    
+
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center; 
-    padding: 30px 20px 20px 20px; 
-    min-height: 250px; 
+    align-items: center;
+    padding: 30px 20px 20px 20px;
+    min-height: 250px;
 }
 
 .footer_logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .footer_logo h1 {
@@ -801,9 +829,9 @@ footer {
     font-family: "Protest Guerrilla", sans-serif;
     font-weight: 400;
     font-style: normal;
-    text-align: center; 
+    text-align: center;
     line-height: 1;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 
 .footer_logo .social_media {
@@ -829,70 +857,138 @@ footer {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-size: 0.7rem;
-    text-align: center; 
-    margin-top: 20px; 
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* Responsive Design FOOTER */
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
     footer {
         padding: 25px 15px 15px 15px;
         min-height: 220px;
     }
+
     .footer_logo h1 {
-        font-size: 4rem; 
+        font-size: 4rem;
         margin-bottom: 10px;
     }
+
     .footer_logo .social_media {
-        gap: 1.5rem; 
+        gap: 1.5rem;
     }
+
     .footer_logo .social_media i {
-        font-size: 1.3rem; 
+        font-size: 1.3rem;
     }
+
     .copyright {
-        font-size: 0.65rem; 
+        font-size: 0.65rem;
         margin-top: 15px;
     }
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     footer {
         padding: 20px 10px 10px 10px;
         min-height: 200px;
     }
+
     .footer_logo h1 {
-        font-size: 3.5rem; 
+        font-size: 3.5rem;
         margin-bottom: 8px;
     }
+
     .footer_logo .social_media {
         gap: 1.2rem;
     }
+
     .footer_logo .social_media i {
         font-size: 1.2rem;
     }
+
     .copyright {
         font-size: 0.6rem;
         margin-top: 10px;
     }
 }
 
-@media (max-width: 480px) { 
+@media (max-width: 480px) {
     footer {
         padding: 15px 10px 10px 10px;
-        min-height: 180px; 
+        min-height: 180px;
     }
+
     .footer_logo h1 {
         font-size: 2.8rem;
         margin-bottom: 5px;
     }
+
     .footer_logo .social_media {
-        gap: 1rem; 
+        gap: 1rem;
     }
+
     .footer_logo .social_media i {
-        font-size: 1.1rem; 
+        font-size: 1.1rem;
     }
+
     .copyright {
-        font-size: 0.55rem; 
+        font-size: 0.55rem;
         margin-top: 5px;
     }
+}
+
+
+#custom-carousel {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0;
+    background-color: var(--background-color-primary);
+}
+
+
+.card {
+    background: #f1f1f1;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #555;
+}
+
+
+.card_weather_forecast {
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    height: 200px;
+    width: 300px;
+}
+
+
+.splide header{
+    /* text-align: center; */
+    margin-left: 80px;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color-primary);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.forecast_5days_header{
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color-primary);
 }
