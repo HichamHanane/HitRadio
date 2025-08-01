@@ -253,15 +253,16 @@ const Forecast5Days = (list) => {
         document.getElementById('splide__list').innerHTML += `
             <li class="splide__slide">
                     <div class="card_weather_forecast">
-                        <h6 class="forecast_5days_header">${new Date(day.date).toLocaleDateString("en-US", { weekday: "long" })}</h6>
-                        <h1 class="current_city" id="currentCity">
-                            <i class="fa-solid fa-location-dot"style="background-color: transparent;font-size:1.5rem;color:#3A4160"></i>
+                        <h1 class="current_city" id="currentCity" style="font-size:0.5rem">
+                            <i class="fa-solid fa-location-dot"style="background-color: transparent;font-size:0.5rem;color:#3A4160"></i>
                             ${currentCity}
                         </h1>
-                        
-                        <h2 class="city_temp" id="currentTemp">${day.avgTemp}°C</h2>
+                        <h6 class="forecast_5days_header">
+                            <i class="fa-regular fa-calendar-days" style="font-size:1rem"></i>
+                            ${new Date(day.date).toLocaleDateString("en-US", { weekday: "long" })}
+                        </h6>
+                        <h2 class="city_temp" id="currentTemp">${Math.round(day.avgTemp)}°C</h2>
                         <p class="weather_condition" id="weatherCondition">${day.weather}</p>
-                    
                         <div class="bottom_card">
                             <p id="currentWind" class="wind">Wind : ${day.wind} km/h</p>
                             <p id="currentHumidity" class="Humidity">Humidity : ${day.humidity} % </p>
