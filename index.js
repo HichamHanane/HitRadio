@@ -1,8 +1,13 @@
 
 const apiKey = "df44f85ddab485da6f7ffca1cee027ef";
 
-let currentWeatherIsLoading = true;
+let  chartTextColor;
+let  chartGridColor;
+let  chartLineColor;
+let  chartBackgroundColor;
 
+let currentWeatherIsLoading = true;
+let myChart;
 // Theme Toggle Logic
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
@@ -13,9 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (theme === 'light') {
             body.classList.add('light-mode');
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+
+            chartTextColor ="rgb(58, 65, 96)";
+            chartGridColor="rgba(58, 65, 96, 0.2)";
+            chartLineColor="rgb(58, 65, 96)";
+
         } else {
             body.classList.remove('light-mode');
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            // chartTextColor ="white";
+            // chartGridColor="white";
+            // chartLineColor="white";
         }
         localStorage.setItem('theme', theme);
     };
@@ -289,6 +302,77 @@ const Forecast5Days = (list) => {
 
 }
 
+
+const renderChart = (forecastData) => {
+    const labels = forecastData.map(item => {
+        let time = item.dt_txt.split(" ")[1].substring(0, 5);
+        return time;
+    });
+
+    const temperatures = forecastData.map(item => item.main.temp);
+
+    // Check for light mode and set colors
+    const isLightMode = document.body.classList.contains('light-mode');
+    // const chartTextColor = isLightMode ? 'rgb(58, 65, 96)' : 'white';
+    // const chartGridColor = isLightMode ? 'rgba(58, 65, 96, 0.2)' : 'rgba(255, 255, 255, 0.2)';
+    // const chartLineColor = isLightMode ? 'rgb(58, 65, 96)' : 'rgb(58, 65, 96)';
+    // const chartBackgroundColor = isLightMode ? 'rgba(58, 65, 96, 0.2)' : 'rgba(58, 65, 96, 0.5)';
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperature (°C)',
+            backgroundColor: chartBackgroundColor,
+            borderColor: chartLineColor,
+            data: temperatures,
+            fill: true,
+            tension: 0.4
+        }]
+
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    grid: {
+                        color: chartGridColor
+                    },
+                    ticks: {
+                        color: chartTextColor
+                    }
+                },
+                x: {
+                    grid: {
+                        color: chartGridColor
+                    },
+                    ticks: {
+                        color: chartTextColor
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: chartTextColor
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+
+    };
+
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    if (myChart) {
+        myChart.destroy(); // Destroy the old chart if it exists
+    }
+    myChart = new Chart(ctx, config); // Create a new chart
+};
+
 // logic code to to change the active element style
 const navlinksActiveElement = () => {
     const div_container = document.getElementById('days_navLinks')
@@ -354,9 +438,11 @@ const getForecast = (selectedDay) => {
             </div>
         `
     })
-
+    renderChart(select_day_forcast)
 
 }
+
+
 
 
 getWeatherCurrentLocation();

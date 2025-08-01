@@ -997,3 +997,37 @@ footer {
     font-weight: 300;
     color: var(--text-color-primary);
 }
+
+/* SECTION GRAPH */
+.graph-section {
+    background-color: var(--background-color-primary);
+    padding: 30px;
+}
+
+.graph-section header {
+    margin: 0 80px 30px 80px;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color-primary);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.chart-container {
+    height: 400px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: var(--card-background);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .graph-section header {
+        margin: 0 20px 20px 20px;
+        text-align: center;
+    }
+    .chart-container {
+        width: 95%;
+        height: 300px;
+    }
+}
