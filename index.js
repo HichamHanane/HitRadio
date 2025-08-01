@@ -1,7 +1,7 @@
 
 const apiKey = "df44f85ddab485da6f7ffca1cee027ef";
 
-let  chartTextColor;
+let  chartTextColor="black";
 let  chartGridColor;
 let  chartLineColor;
 let  chartBackgroundColor;
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.add('light-mode');
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
 
-            chartTextColor ="rgb(58, 65, 96)";
-            chartGridColor="rgba(58, 65, 96, 0.2)";
-            chartLineColor="rgb(58, 65, 96)";
+            chartTextColor ="black";
+            chartGridColor="#007bff";
+            chartLineColor="#007bff";
 
         } else {
             body.classList.remove('light-mode');
